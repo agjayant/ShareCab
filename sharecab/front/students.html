@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <link rel="stylesheet" href="main.css">
+                <title>HOME</title>
+        </head>
+        <body>
+		<header class="head">
+			<img src="logo1.png" class="logo">
+        	        <div class="heading">
+                	        <h1 id="first">SHARECAB</h1>
+                            <!--<h2 id="second">Department of Computer Science and Engineering</h2>-->
+	                        <h3 id="third">IIT Kanpur</h3>
+        	         </div>
+		
+			 <div class="nav">
+	                        <a class="goto" href="home.html">Home</a>
+	                        <a class="goto" id="ch" href="students.html">insert</a>
+        	                <a class="goto" href="students_q.html">Query</a>
+                 	</div>
+		 </header>
+		 
+		 <section class="form2">		 
+			 <!--<div class="subnav">				-->
+							<!--<a class="subgoto" id="ch" href="students.html">STUDENTS</a>-->
+							<!--<a class="subgoto" href="faculty.html">faculty</a>-->
+							<!--<a class="subgoto" href="courses.html">courses</a>-->
+							<!--<a class="subgoto" href="enrollment.html">ENROLLMENT</a>-->
+			<!--</div>-->
+
+                 	<form action="students_e.php" method="post" class="entry">
+			<fieldset>
+		 		<input type="number" name="TIME"  placeholder = "10:00 am " required><br>
+		 		<input type="text" name="name"  placeholder = "Full Name" required><br>
+		 		<input type="text" name="email"  placeholder = "email" required><br>
+		 		<input type="text" name="Train Number"  placeholder = "Enter Train Number" required><br>
+        	                <input type="submit" name="insert" class="btn" value="Submit">
+			 </fieldset>
+                	 </form>
+		 </section>          
+	
+		 <!--<footer class="table">
+                         <a class="result" href="result.php">Database</a>
+                 </footer>-->
+        </body>
+</html>        
