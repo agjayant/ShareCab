@@ -1,0 +1,185 @@
+body{
+	background: #293f50;
+	color:#888;
+	font: 16px "Lato","Open Sans","Helvetica Neue", Helvetica,Arial,sans-serif;	
+}
+
+header{
+	margin-top:0px;	
+}
+
+
+footer{
+	clear:both;
+	text-align : center;
+	display:block;
+	margin-bottom:0;
+	margin-top:20px;
+	padding-bottom:0;
+
+}
+
+section{
+	color:#293f50;
+	clear:both;
+	display:block;
+	text-align:center;
+	height:300px;
+	padding-top:200px;
+	padding-bottom:100px;
+	line-height:40px;	
+	background: #cbe2c1;
+	background: linear-gradient(to right, #a1d3b0, #f6f1d3);
+}
+.logo{
+	float:left;
+	margin:10px 10px 50px 20px;
+	width:110px;
+	padding-top:20px;	
+}
+
+.heading{
+	float:left;
+	text-align:left;
+	line-height:15px;			
+	padding-top:20px;
+}
+
+.result{
+	text-decoration:none;
+	display:inline-block;
+	border:1px solid #fff;
+	padding: 10px 30px;
+	border-radius:5px;
+	color: #fff;
+	cursor:pointer;
+	font-weight:400;
+	letter-spacing: .5px;
+	text-transform:uppercase;
+}
+
+.result:hover{
+	background:#fff;
+	color:#648880;	
+}
+
+.nav{
+	float:right;
+	margin:50px 200px 10px 10px;
+	text-align:center;
+	letter-spacing:.5px;
+	text-transform:uppercase;
+
+}
+.login{
+	float:right;
+	margin:50px 200px 10px 10px;
+	text-align:center;
+	letter-spacing:.5px;
+}
+
+
+.subnav{
+	clear:both;
+	margin:50px 200px 30px 180px;
+	text-align:center;	
+	font-size:16px;	
+	letter-spacing:.5px;
+	text-transform:uppercase;
+}
+
+.subgoto{
+	color:#293f50;
+	text-decoration:none;
+	margin:0 10px;	
+}
+
+.subgoto:hover{
+	color:#888;	
+}
+
+.goto{
+	font-size:20px;
+	margin:0 10px;
+	color:white;
+	text-decoration:none;
+}
+
+.goto:hover{
+	color:#888;		
+}
+
+fieldset{
+	border:none;	
+}
+
+form{
+	width:240px;	
+	margin-left:43.7%;
+
+}
+
+
+.form2{
+	line-height:20px;
+	padding-top:60px;
+	padding-bottom:240px;	
+}
+.entry{
+	line-height:45px;	
+}
+.res{
+	line-height:27px;	
+}
+.btn{
+	border:0;
+	color:#fff;
+	cursor:pointer;
+	font-weight:bold;
+	padding:8px 16px;	
+	background:#293f50;
+}
+
+.btn:hover{
+	color:#293f50;
+	background:#888;	
+}
+input{
+	border-radius:5px;
+	padding:6px;
+	
+}
+.table{
+	padding-top:35px;
+	padding-bottom:65px;	
+}
+
+#ch{
+	color:#888;
+}
+
+#new{
+	margin-top:10px;
+}
+
+#field{
+	text-align:center;
+
+}
+
+.tabular{
+	margin-left:auto;
+	margin-right:auto;	
+
+}
+
+#frow{
+	color:black;
+}
+
+
+.even{
+	color:#505050;
+	
+}
+
