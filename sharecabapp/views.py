@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
+from sharecabapp.models import Ride
 
 def home(request):
    context = RequestContext(request,
@@ -20,5 +21,26 @@ def query(request):
                            {'request': request,
                             'user': request.user})
    return render_to_response('query.html',
+                             context_instance=context)
+
+def entry(request):
+    new_ride = Ride()
+    d = request.POST
+    new_ride.ridetime = d['time']
+    new_ride.email = d['email']
+    new_ride.source = d['source']
+    new_ride.destination = d['destination']
+    new_ride.train = d['train']
+    new_ride.capacity = d['capacity']
+    new_ride.preference = d['preference']
+    new_ride.save()
+    return render_to_response('thankyou.html')
+
+
+def thankyou(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('thankyou.html',
                              context_instance=context)
 
