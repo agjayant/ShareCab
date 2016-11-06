@@ -44,3 +44,19 @@ def thankyou(request):
    return render_to_response('thankyou.html',
                              context_instance=context)
 
+def display(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('display.html',
+                             context_instance=context)
+
+
+def result(request):
+    check = Ride()
+    d = request.POST
+    check = Ride.objects.filter(train__exact = d['train'])
+    return render_to_response('display.html',{ 'answer': check })
+
+
+
