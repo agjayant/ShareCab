@@ -20,6 +20,9 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
    url(r'^$', 'sharecabapp.views.home', name='home'),
+   url(r'^home', 'sharecabapp.views.home', name='home'),
+   url(r'^insert', 'sharecabapp.views.insert', name='insert'),
+   url(r'^query', 'sharecabapp.views.query', name='query'),
    url(r'^admin/', include(admin.site.urls)),
    url('', include('social.apps.django_app.urls', namespace='social')),
    url('', include('django.contrib.auth.urls', namespace='auth')),
