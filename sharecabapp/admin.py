@@ -1,16 +1,16 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Ride, Person
+from .models import Ride
 
-class PersonInline(admin.TabularInline):
-    model = Person
-    extra = 1
+#class PersonInline(admin.TabularInline):
+ #   model = Person
+ #  extra = 1
 
 
 class RideAdmin(admin.ModelAdmin):
-    inlines = [PersonInline]
-    list_display = ('destination', 'source', 'ridetime', 'capacity')
+    #inlines = [PersonInline]
+    list_display = ('name','destination', 'source', 'ridetime', 'capacity','preference','train')
     list_filter = ['ridetime']
     search_fields = ['destination','source']
 
