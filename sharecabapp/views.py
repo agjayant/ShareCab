@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from sharecabapp.models import Ride
+from django.contrib.auth.decorators import login_required
 
 def home(request):
    context = RequestContext(request,
@@ -9,7 +10,9 @@ def home(request):
    return render_to_response('home.html',
                              context_instance=context)
 
+# @login_required(login_url="/home/")
 def insert(request):
+
    context = RequestContext(request,
                            {'request': request,
                             'user': request.user})
@@ -26,6 +29,7 @@ def query(request):
 def entry(request):
     new_ride = Ride()
     d = request.POST
+    new_ride.name= d['name']
     new_ride.ridetime = d['time']
     new_ride.email = d['email']
     new_ride.source = d['source']
@@ -43,4 +47,22 @@ def thankyou(request):
                             'user': request.user})
    return render_to_response('thankyou.html',
                              context_instance=context)
+
+def display(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('display.html',
+                             context_instance=context)
+
+
+def result(request):
+    queryRes = Ride()
+    d = request.POST
+    if len(Ride.objects.filter(train__exact = d['train'])) > 0 :
+        queryRes = Ride.objects.filter(train__exact = d['train'])
+
+    return render_to_response('display.html',{ 'answer': queryRes })
+
+
 
