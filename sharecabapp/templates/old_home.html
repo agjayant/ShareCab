@@ -35,24 +35,17 @@
  </div>
 
 			 <div class="nav">
-			 	<a class="goto" href="/home.html">HOME</a> 
-			 	<a class="goto" href="/insert.html">INSERT</a>
-				<a class="goto" href="/query.html">Query</a>
+			 	<a class="goto" href="home.html">HOME</a> 
+			 	<a class="goto" href="insert.html">INSERT</a>
+				<a class="goto" href="query.html">Query</a>
 			 </div>
 		 </header>
 		 		 	
 		 <section class="content">
-            
-             <!--<p> Answer: {{ answer }} </p>-->
-            {% if answer|length > 0 %}
-                <table class="tabular"><tr><td>Name</td><td>Email</td><td>Preference</td><td>Group Size</td></tr>
-                {% for ans in answer %}
-                    <tr><td> {{ ans.name }}</td><td>{{ans.email}}</td><td>{{ans.preference}}</td></tr>
-                {% endfor %}
-                </table>
-            {% else %}
-                <p> NO RESULT FOUND </p>
-            {% endif %}
+			<p> This is a website for ride sharing for students of IIT Kanpur</p>
+                        <p> Use the Insert Tab for inserting data </p>
+                        <p> Use the Query Tab for querying </p>
+                        <p> Instructions are given further</p>
 		 </section>	
 	</body>
 </html>

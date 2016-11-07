@@ -31,11 +31,11 @@ def entry(request):
     d = request.POST
     new_ride.name= d['name']
     new_ride.ridetime = d['time']
+    new_ride.ridedate = d['date']
     new_ride.email = d['email']
     new_ride.source = d['source']
     new_ride.destination = d['destination']
     new_ride.train = d['train']
-    new_ride.capacity = d['capacity']
     new_ride.preference = d['preference']
     new_ride.save()
     return render_to_response('thankyou.html')

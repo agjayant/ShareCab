@@ -1,54 +1,241 @@
+{% load staticfiles %}
+
 <!DOCTYPE html>
 <html>
-        <head>
-        {% load static %}
-                <link rel="stylesheet" href="{% static 'main.css' %}">
-                <title>HOME</title>
-        </head>
-        <body>
-		<header class="head">
-            <img src="{% static 'logo1.png' %}" class="logo">
-        	        <div class="heading">
-                	        <h1 id="first">SHARECAB</h1>
-                            <!--<h2 id="second">Department of Computer Science and Engineering</h2>-->
-	                        <h3 id="third">IIT Kanpur</h3>
-        	         </div>
-		
-			 <div class="nav">
-	                        <a class="goto" href="home.html">Home</a>
-	                        <a class="goto" id="ch" href="insert.html">insert</a>
-        	                <a class="goto" href="query.html">Query</a>
-                 	</div>
-		 </header>
-		 
-		 <section class="form2">		 
-			 <!--<div class="subnav">				-->
-							<!--<a class="subgoto" id="ch" href="students.html">STUDENTS</a>-->
-							<!--<a class="subgoto" href="faculty.html">faculty</a>-->
-							<!--<a class="subgoto" href="courses.html">courses</a>-->
-							<!--<a class="subgoto" href="enrollment.html">ENROLLMENT</a>-->
-			<!--</div>-->
 
-                 	<form action="/entry/" method="post" class="entry">
-                        {% csrf_token %}
-			<fieldset>
+<head>
 
-                <input type="text" name="name"  placeholder = {{ user }} required><br>
-		 		<input type="datetime" name="time"  placeholder = "Date Time " required><br>
-		 		<input type="email" name="email"  placeholder = "Email ID " required><br>
-		 		<input type="text" name="source"  placeholder = "Source" required><br>
-		 		<input type="text" name="destination"  placeholder = "Destination" required><br>
-		 		<input type="number" name="train"  placeholder = "Enter Train Number" required><br>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-		 		<input type="number" name="capacity"  placeholder = "Group Size" required><br>
-                <select name="preference"> <option value="tempo">Tempo</option><option value="auto">Auto</option><option value="cab">Cab</option><option value="any">Any</option></select><br>
-        	                <input type="submit" name="insert" class="btn" value="Submit">
-			 </fieldset>
-                	 </form>
-		 </section>          
-	
-		 <!--<footer class="table">
-                         <a class="result" href="result.php">Database</a>
-                 </footer>-->
-        </body>
-</html>        
+    <title>ShareCab - A Ridesharing Site</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- <link rel="stylesheet" href="{% static 'main.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Custom CSS -->
+    <link href="{% static 'css/landing-page.css' %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
+        <div class="container topnav">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand topnav" href="#">Indian Institute of Technology, Kanpur</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="insert.html">Add Your Ride</a>
+                    </li>
+                    <li>
+                        <a href="query.html">Find A Ride</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Review</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+
+    <form class="well form-horizontal" action="/entry/ " method="post"  id="contact_form">
+    {% csrf_token %}
+<fieldset>
+
+<!-- Form Name -->
+<legend>Where, When, How!</legend>
+
+<!-- Text input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label">First Name</label>  
+  <div class="col-md-4 inputGroupContainer">
+  <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+  <input  name="name" placeholder="Name" class="form-control"  type="text" value={{user}}>
+    </div>
+  </div>
+</div> 
+
+<!-- source input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Source</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <input name="source" placeholder="From" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+<!-- destination input-->
+
+<div class="form-group">
+  <label class="col-md-4 control-label" >Destination</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+  <input name="destination" placeholder="To" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+
+<!-- email input-->
+       <div class="form-group">
+  <label class="col-md-4 control-label">E-Mail</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+  <input name="email" placeholder="E-Mail Address" class="form-control"  type="text">
+    </div>
+  </div>
+</div>
+
+
+<!-- date input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Date of Travel</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+  <input name="date" placeholder="yyyy-mm-dd" class="form-control" type="date">
+    </div>
+  </div>
+</div>
+
+<!-- time input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Depart Time</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+  <input name="time" placeholder="hh:mm" class="form-control" type="time">
+    </div>
+  </div>
+</div>
+
+<!-- train input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Train Number</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-road"></i></span>
+  <input name="train" placeholder="train number" class="form-control" type="number">
+    </div>
+  </div>
+</div>
+
+
+<!-- preference input-->
+       
+<!-- <div class="form-group">
+  <label class="col-md-4 control-label">Date-Time</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+  <input name="preference" placeholder="any/aut" class="form-control" type="datetime">
+    </div>
+  </div>
+</div> -->
+
+
+<!-- preference Select Basic -->
+   
+<div class="form-group"> 
+  <label class="col-md-4 control-label">Preference</label>
+    <div class="col-md-4 selectContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+    <select name="preference" class="form-control selectpicker" >
+      <option value=" " >Please select your preferred mode</option>
+      <option>Any</option>
+      <option>Auto</option>
+      <option >Tempo</option>
+      <option >Cab</option>
+    </select>
+  </div>
+</div>
+</div>
+
+
+<!-- Success message -->
+<!-- <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div> -->
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-warning" >Send <span class="glyphicon glyphicon-send"></span></button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+<!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="insert.html">Add Your Ride</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="query.html">Find a Ride</a>
+                        </li>
+                        <li class="footer-menu-divider">&sdot;</li>
+                        <li>
+                            <a href="#contact">Review</a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted small">Copyright &copy; Your Company 2016. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+    </div><!-- /.container -->
+</body>
+</html>
+<div class="container">
+
+

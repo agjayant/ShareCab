@@ -10,7 +10,7 @@ from .models import Ride
 
 class RideAdmin(admin.ModelAdmin):
     #inlines = [PersonInline]
-    list_display = ('name','destination', 'source', 'ridetime', 'capacity','preference','train')
+    list_display = ('name','destination', 'source', 'ridedate','ridetime','preference','train','email')
     list_filter = ['ridetime']
     search_fields = ['destination','source']
 
