@@ -38,7 +38,7 @@ def entry(request):
     new_ride.train = d['train']
     new_ride.preference = d['preference']
     new_ride.save()
-    return render_to_response('thankyou.html')
+    return render_to_response('thanks.html')
 
 
 def thankyou(request):
