@@ -29,6 +29,7 @@ def query(request):
 def entry(request):
     new_ride = Ride()
     d = request.POST
+    new_ride.name= d['name']
     new_ride.ridetime = d['time']
     new_ride.email = d['email']
     new_ride.source = d['source']
@@ -58,7 +59,9 @@ def display(request):
 def result(request):
     queryRes = Ride()
     d = request.POST
-    queryRes = Ride.objects.filter(train__exact = d['train'])
+    if len(Ride.objects.filter(train__exact = d['train'])) > 0 :
+        queryRes = Ride.objects.filter(train__exact = d['train'])
+
     return render_to_response('display.html',{ 'answer': queryRes })
 
 

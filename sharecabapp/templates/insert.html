@@ -32,6 +32,8 @@
                  	<form action="/entry/" method="post" class="entry">
                         {% csrf_token %}
 			<fieldset>
+
+                <input type="text" name="name"  placeholder = {{ user }} required><br>
 		 		<input type="datetime" name="time"  placeholder = "Date Time " required><br>
 		 		<input type="email" name="email"  placeholder = "Email ID " required><br>
 		 		<input type="text" name="source"  placeholder = "Source" required><br>

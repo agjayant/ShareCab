@@ -44,11 +44,15 @@
 		 <section class="content">
             
              <!--<p> Answer: {{ answer }} </p>-->
-             <table class="tabular"><tr><td>Name</td><td>Email</td><td>Preference</td><td>Group Size</td></tr>
-            {% for ans in answer %}
-            <tr><td> {{ ans.name }}</td><td>{{ans.email}}</td><td>{{ans.preference}}</td><td>{{ans.capacity}}</td></tr>
-            {% endfor %}
-            </table>
+            {% if answer|length > 0 %}
+                <table class="tabular"><tr><td>Name</td><td>Email</td><td>Preference</td><td>Group Size</td></tr>
+                {% for ans in answer %}
+                    <tr><td> {{ ans.name }}</td><td>{{ans.email}}</td><td>{{ans.preference}}</td><td>{{ans.capacity}}</td></tr>
+                {% endfor %}
+                </table>
+            {% else %}
+                <p> NO RESULT FOUND </p>
+            {% endif %}
 		 </section>	
 	</body>
 </html>
