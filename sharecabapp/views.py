@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from sharecabapp.models import Ride
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 
 def home(request):
    context = RequestContext(request,
@@ -63,4 +64,9 @@ def profile(request):
     return render_to_response('display.html',{ 'answer': queryRes })
 
 
-
+def review(request):
+   context = RequestContext(request,
+                           {'request': request,
+                            'user': request.user})
+   return render_to_response('review.html',
+                             context_instance=context)
