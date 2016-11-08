@@ -42,21 +42,28 @@
 		 </header>
 		 		 	
 		 <section class="content">
-                        
+            
              <!--<p> Answer: {{ answer }} </p>-->
             {% if answer|length > 0 %}
-                <table class="tabular"><tr><td>Name</td><td>Email</td><td>Preference</td><td>Ride Page</td></tr>
+                <table class="tabular"><tr><td>Name</td><td>Comment</td></tr>
                 {% for ans in answer %}
-                <tr><td> {{ ans.name }}</td><td>{{ans.email}}</td><td>{{ans.preference}}</td>
-                    <td><a href="{% url 'ridepage' ans.id %}">Forum</a>
-                    </td>
-                </tr>
-
+                    <tr><td> {{ ans.name }}</td><td>{{ans.comment}}</td></tr>
                 {% endfor %}
                 </table>
             {% else %}
-                <p> NO RESULT FOUND </p>
+                <p> NO COMMENTS YET </p>
             {% endif %}
+
+            <form action="/addComment/" method="post">
+            {% csrf_token %}
+            <fieldset >
+                <input type="hidden" name="id" value= {{ id }} >
+                <input type="text" name="comment" placeholder="Add your comment here..." ><br>
+                <input type="submit" name="add" value="Add Comment">
+            </fieldset>
+            </form>
+
+
 		 </section>	
 	</body>
 </html>

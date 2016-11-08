@@ -1,7 +1,9 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.template.context import RequestContext
-from sharecabapp.models import Ride
+from sharecabapp.models import Ride,Comment
 from django.contrib.auth.decorators import login_required
+import datetime
+from django.core.context_processors import csrf
 
 def home(request):
    context = RequestContext(request,
@@ -61,6 +63,32 @@ def profile(request):
     if len(Ride.objects.filter(name__exact = request.user)) > 0 :
         queryRes = Ride.objects.filter(name__exact = request.user)
     return render_to_response('display.html',{ 'answer': queryRes })
+
+def ridepage(request,id ):
+    comments = Comment()
+    if len(Comment.objects.filter(rideNum__exact = id )) > 0:
+        comments = Comment.objects.filter(rideNum__exact = id )
+    c = {'answer': comments, 'id': id }
+    c.update(csrf(request))
+    return render_to_response('comments.html',c)
+
+def addComment(request ):
+    newComment = Comment()
+    d = request.POST
+    thisRide = Ride.objects.get(id__exact = d['id'] )
+    newComment.rideNum = thisRide
+    newComment.name = request.user.first_name
+    newComment.comment = d['comment']
+    newComment.commentTime = datetime.datetime.now()
+    newComment.save()
+
+    comments = Comment()
+    if len(Comment.objects.filter(rideNum__exact = thisRide )) > 0:
+        comments = Comment.objects.filter(rideNum__exact = thisRide )
+    c = {'answer': comments ,'id': d['id'] }
+    return render(request, 'comments.html', c )
+
+
 
 
 

@@ -36,7 +36,7 @@ class Comment(models.Model):
 #     userName = models.CharField(max_length=50)
 #     vehicleNum = models.ForeignKey(Ride)
 #     name = models.CharField(max_length=50)
-#     mobile = 
+#     mobile =
 #     commentTime = models.DateTimeField(default=datetime.datetime.now)
 #     def __unicode__(self):
 #         return self.name
