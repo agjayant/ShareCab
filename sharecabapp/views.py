@@ -29,7 +29,7 @@ def query(request):
 def entry(request):
     new_ride = Ride()
     d = request.POST
-    new_ride.name= d['name']
+    new_ride.name= request.user
     new_ride.ridetime = d['time']
     new_ride.ridedate = d['date']
     new_ride.email = d['email']
@@ -48,20 +48,18 @@ def thankyou(request):
    return render_to_response('thankyou.html',
                              context_instance=context)
 
-def display(request):
-   context = RequestContext(request,
-                           {'request': request,
-                            'user': request.user})
-   return render_to_response('display.html',
-                             context_instance=context)
-
-
 def result(request):
     queryRes = Ride()
     d = request.POST
     if len(Ride.objects.filter(train__exact = d['train'])) > 0 :
         queryRes = Ride.objects.filter(train__exact = d['train'])
 
+    return render_to_response('display.html',{ 'answer': queryRes })
+
+def profile(request):
+    queryRes = Ride()
+    if len(Ride.objects.filter(name__exact = request.user)) > 0 :
+        queryRes = Ride.objects.filter(name__exact = request.user)
     return render_to_response('display.html',{ 'answer': queryRes })
 
 

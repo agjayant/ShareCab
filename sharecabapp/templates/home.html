@@ -63,6 +63,9 @@
                     <li>
                         <a href="#contact">Review</a>
                     </li>
+                    <li>
+                        <a href="/profile">Your Rides</a>
+                    </li>
             {% else %}
                     <li>
                         <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" >Add Your Ride</a>
