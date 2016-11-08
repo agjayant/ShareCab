@@ -24,9 +24,19 @@ class Ride(models.Model):
     def __unicode__(self):
         return self.destination
 
-# class Person(models.Model):
-#     ridegroup = models.ForeignKey(Ride)
+class Comment(models.Model):
+    rideNum = models.ForeignKey(Ride)
+    name = models.CharField(max_length=50)
+    comment = models.TextField()
+    commentTime = models.DateTimeField(default=datetime.now)
+    def __unicode__(self):
+        return self.name
+
+# class Driver(models.Model):
+#     userName = models.CharField(max_length=50)
+#     vehicleNum = models.ForeignKey(Ride)
 #     name = models.CharField(max_length=50)
-#     email = models.CharField(max_length=50)
+#     mobile = 
+#     commentTime = models.DateTimeField(default=datetime.datetime.now)
 #     def __unicode__(self):
 #         return self.name
