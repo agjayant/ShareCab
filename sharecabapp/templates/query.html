@@ -74,7 +74,7 @@
     <form class="well form-horizontal" action="/result/ " method="post">
     {% csrf_token %}
 <fieldset>
-
+<h3>Where, When, How!</h3>
 <!-- Form Name -->
 <legend>Where, When, How!</legend>
 
@@ -121,7 +121,7 @@
   <label class="col-md-4 control-label">Date of Travel</label>  
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
   <input name="date" placeholder="yyyy-mm-dd" class="form-control" type="date">
     </div>
   </div>
