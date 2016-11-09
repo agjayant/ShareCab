@@ -54,8 +54,13 @@ def thankyou(request):
 def result(request):
     queryRes = Ride()
     d = request.POST
-    if len(Ride.objects.filter(train__exact = d['train'])) > 0 :
-        queryRes = Ride.objects.filter(train__exact = d['train'])
+    time1 = d['time1']
+    time2 = d['time2']
+
+    if len(Ride.objects.filter(train__exact = d['train'] , ridedate__exact = d['date']) ) > 0 :
+        queryRes = Ride.objects.filter(train__exact = d['train'] , ridedate__exact = d['date'])
+    elif len (Ride.objects.filter(source__exact = d['source'] , destination__exact = d['destination'] , ridedate__exact = d['date'] , ridetime__gte = time1 , ridetime__lte = time2)) > 0 :
+        queryRes = Ride.objects.filter(source__exact = d['source'] , destination__exact = d['destination'] , ridedate__exact = d['date'] ).order_by('ridetime')
 
     return render_to_response('display.html',{ 'answer': queryRes })
 
