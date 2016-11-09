@@ -33,9 +33,9 @@ div.table-title {
   background: white;
   border-radius:3px;
   border-collapse: collapse;
-  height: 320px;
+  height: 150px;
   margin: auto;
-  max-width: 600px;
+  max-width: 1300px;
   padding:5px;
   width: 100%;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
@@ -53,15 +53,18 @@ th {
   text-align:left;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
+  font-weight: bold;
 }
 
 th:first-child {
   border-top-left-radius:3px;
+  font-weight: bold;
 }
  
 th:last-child {
   border-top-right-radius:3px;
   border-right:none;
+  font-weight: bold;
 }
   
 tr {
@@ -75,7 +78,7 @@ tr {
  
 tr:hover td {
   background:#4E5066;
-  color:#FFFFFF;
+  color:#99ff33;
   border-top: 1px solid #22262e;
   border-bottom: 1px solid #22262e;
 }
@@ -137,6 +140,7 @@ td.text-left {
 
 td.text-center {
   text-align: center;
+  font-weight: bold;
 }
 
 td.text-right {
