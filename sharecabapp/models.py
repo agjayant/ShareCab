@@ -1,5 +1,5 @@
 from django.db import models
-import datetime 
+import datetime
 
 # Create your models here.
 class Ride(models.Model):
@@ -46,5 +46,4 @@ class Review(models.Model):
     comment = models.TextField()
     commentTime = models.DateTimeField(default=datetime.datetime.now)
     rating = models.PositiveIntegerField(default=2)
-
 

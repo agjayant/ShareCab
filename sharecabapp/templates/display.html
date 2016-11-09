@@ -64,41 +64,35 @@
 <div class="table-title">
 <h3>Your Rides</h3>
 </div>
+
+{% if answer|length > 0 %}
 <table class="table-fill">
 <thead>
     <tr>
-        <th class="text-left">Source</th>
-        <th class="text-left">Destination</th>
-        <th class="text-left">Date</th>
-        <th class="text-left">Time</th>
-        <th class="text-left">Preference</th>
+        <th class="text-center">Source</th>
+        <th class="text-center">Destination</th>
+        <th class="text-center">Date</th>
+        <th class="text-center">Time</th>
+        <th class="text-center">Preference</th>
+        <th class="text-center">Ride Forum</th>
     </tr>
 </thead>
 <tbody class="table-hover">
     {% for ans in answer %}
         <tr>
-            <td class="text-left">{{ans.source}}</td>
-            <td class="text-left">{{ans.destination}}</td>
-            <td class="text-left">{{ans.ridedate}}</td>
-            <td class="text-left">{{ans.ridetime}}</td>
-            <td class="text-left">{{ans.preference}}</td>
+            <td class="text-center">{{ans.source}}</td>
+            <td class="text-center">{{ans.destination}}</td>
+            <td class="text-center">{{ans.ridedate}}</td>
+            <td class="text-center">{{ans.ridetime}}</td>
+            <td class="text-center">{{ans.preference}}</td>
+            <td class="text-center"><a href="{% url 'ridepage' ans.id %}">Forum</a></td>
         </tr>
-{% endfor %}
+    {% endfor %}
 </tbody>
 </table>
-       <!-- <section class="content"> -->
-            
-             <!-- <p> Answer: {{ answer }} </p> -->
-            <!-- {% if answer|length > 0 %}
-                <table class="tabular"><tr><td>Name</td><td>Email</td><td>Preference</td><td>Group Size</td></tr>
-                {% for ans in answer %}
-                    <tr><td> {{ ans.name }}</td><td>{{ans.email}}</td><td>{{ans.preference}}</td></tr>
-                {% endfor %}
-                </table>
-            {% else %}
-                <p> NO RESULT FOUND </p>
-            {% endif %}
-     </section>  -->
+{% else %}
+                <p> You have no Rides </p>
+{% endif %}
 
     <a  name="contact"></a>
     <div class="banner">
