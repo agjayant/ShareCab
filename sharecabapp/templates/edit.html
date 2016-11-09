@@ -51,13 +51,13 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="insert.html">Add Your Ride</a>
+                        <a href="/insert">Add Your Ride</a>
                     </li>
                     <li>
-                        <a href="query.html">Find A Ride</a>
+                        <a href="/query">Find A Ride</a>
                     </li>
                     <li>
-                        <a href="#contact">Review</a>
+                        <a href="/review">Review</a>
                     </li>
                     <li>
                         <a href="/profile">Your Rides</a>
@@ -70,45 +70,49 @@
     </nav>
 
 
-    <form class="well form-horizontal" action="/rating/ " method="post"  id="contact_form">
+    <form class="well form-horizontal" action="/update/" method="post"  id="contact_form">
     {% csrf_token %}
 <fieldset>
-<h3>Driver Details </h3>
+<h3>Ride Details</h3>
 <!-- Form Name -->
-<legend>Driver Details </legend>
+<legend>Ride Details</legend>
 
 <!-- Text input-->
 
-<div class="form-group">
-  <label class="col-md-4 control-label">Driver Name</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="name" placeholder="Name" class="form-control"  type="text">
-    </div>
-  </div>
-</div> 
+<!--<div class="form-group">-->
+  <!--<label class="col-md-4 control-label">Name</label>  -->
+  <!--<div class="col-md-4 inputGroupContainer">-->
+  <!--<div class="input-group">-->
+  <!--<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>-->
+  <!--<input  name="name" placeholder="Name" class="form-control"  type="text" value={{user}}>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div> -->
 
-
+<input  name="name" placeholder="Name"  type="hidden" value={{user}}>
+<!-- source input-->
 <div class="form-group">
-  <label class="col-md-4 control-label">Mobile Number</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-  <input  name="mobile" placeholder="10-digits" class="form-control"  type="text" maxlength="10">
+  <label class="col-md-4 control-label" >Source</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+  <input name="source" placeholder="From" class="form-control"  type="text" value= "{{ answer.source  }}" >
     </div>
   </div>
 </div>
 
+<!-- destination input-->
+
 <div class="form-group">
-  <label class="col-md-4 control-label">Vehicle Number</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="fa fa-car" aria-hidden="true"></i></span>
-  <input  name="vehicleNo" placeholder="UP-11-AA-1111" class="form-control"  type="text" maxlength="13">
+  <label class="col-md-4 control-label" >Destination</label> 
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+  <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+  <input name="destination" placeholder="To" class="form-control"  type="text" value="{{ answer.destination }}" >
     </div>
   </div>
-</div> 
+</div>
+
 
 <!-- date input-->
        
@@ -117,7 +121,31 @@
     <div class="col-md-4 inputGroupContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-  <input name="date" placeholder="yyyy-mm-dd" class="form-control" type="date">
+        <input name="date" placeholder="yyyy-mm-dd" class="form-control" type="date" value= "{{ answer.ridedate  }}">
+    </div>
+  </div>
+</div>
+
+<!-- time input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Depart Time</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        <input name="time" placeholder="hh:mm" class="form-control" type="time" value=" {{ answer.ridetime }}">
+    </div>
+  </div>
+</div>
+
+<!-- train input-->
+       
+<div class="form-group">
+  <label class="col-md-4 control-label">Train Number</label>  
+    <div class="col-md-4 inputGroupContainer">
+    <div class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-road"></i></span>
+        <input name="train" placeholder="train number" class="form-control" type="number" min="10000" max="99999" value="{{ answer.train }}">
     </div>
   </div>
 </div>
@@ -138,45 +166,22 @@
 
 <!-- preference Select Basic -->
    
-<!-- <div class="form-group"> 
-  <label class="col-md-4 control-label">Vehicle Type</label>
+<div class="form-group"> 
+  <label class="col-md-4 control-label">Preference</label>
     <div class="col-md-4 selectContainer">
     <div class="input-group">
         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
     <select name="preference" class="form-control selectpicker" >
-      <option value=" " >Type of vehicle</option>
+      <option value=" " >Please select your preferred mode</option>
+      <option>Any</option>
       <option>Auto</option>
       <option >Tempo</option>
       <option >Cab</option>
     </select>
   </div>
 </div>
-</div> -->
-
-
-<!-- rating input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label" >Rating</label> 
-    <div class="col-md-4 inputGroupContainer">
-    <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-star"></i></span>
-  <input name="rating" placeholder="1 to 5" class="form-control"  type="number" min="1" max="5">
-    </div>
-  </div>
 </div>
 
-<!-- Text input-->
-
-<div class="form-group">
-  <label class="col-md-4 control-label">Comments</label>  
-  <div class="col-md-4 inputGroupContainer">
-  <div class="input-group">
-  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-  <input  name="comment" placeholder="Share your experience here" class="form-control"  type="text">
-    </div>
-  </div>
-</div> 
 
 <!-- Success message -->
 <!-- <div class="alert alert-success" role="alert" id="success_message">Success <i class="glyphicon glyphicon-thumbs-up"></i> Thanks for contacting us, we will get back to you shortly.</div> -->
@@ -185,9 +190,12 @@
 <div class="form-group">
   <label class="col-md-4 control-label"></label>
   <div class="col-md-4">
-    <button type="submit" class="btn btn-warning" >Review <span class="glyphicon glyphicon-send"></span></button>
+    <button type="submit" class="btn btn-warning" > Update <span class="glyphicon glyphicon-send"></span></button>
   </div>
 </div>
+
+</fieldset>
+</form>
 
   <a  name="contact"></a>
     <div class="banner">
@@ -212,9 +220,6 @@
 
     </div>
 
-
-</fieldset>
-</form>
 <!-- Footer -->
     <footer>
         <div class="container">
@@ -247,3 +252,5 @@
 </body>
 </html>
 <div class="container">
+
+

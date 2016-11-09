@@ -34,7 +34,7 @@ class Comment(models.Model):
 
 class Driver(models.Model):
     userName = models.CharField(max_length=50)
-    vehicleNum = models.ForeignKey(Ride)
+    vehicleNum = models.CharField(max_length=13)
     driverName = models.CharField(max_length=50)
     mobile = models.CharField(max_length=10)
     avgRating = models.DecimalField(max_digits=2, decimal_places=1)
@@ -44,6 +44,7 @@ class Review(models.Model):
     driverNum = models.ForeignKey(Driver)
     userName = models.CharField(max_length=50)
     comment = models.TextField()
+    date = models.DateField(default=datetime.date.today)
     commentTime = models.DateTimeField(default=datetime.datetime.now)
     rating = models.PositiveIntegerField(default=2)
 
