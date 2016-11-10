@@ -91,6 +91,18 @@ def profile(request):
         queryRes = Ride.objects.filter(name__exact = request.user)
     return render_to_response('yourRides.html',{ 'answer': queryRes })
 
+def drivers(request):
+    queryRes = Driver.objects.all()
+    return render_to_response('drivers.html',{ 'answer': queryRes })
+
+def drivReviews(request, mobile):
+    thisDriver = Driver.objects.get(mobile__exact = mobile)
+    allReviews = Review.objects.filter(driverNum__exact = thisDriver )
+    c= {'answer': allReviews , 'driv': thisDriver}
+    return render_to_response('driverReviews.html',c)
+
+
+
 def delete(request,id):
     Ride.objects.filter( id__exact = id ).delete()
 
