@@ -61,20 +61,19 @@
                         <a href="/query">Find A Ride</a>
                     </li>
                     <li>
-                        <a href="/review">Review</a>
+                        <a href="/review">Add Driver</a>
+                    </li>
+                    <li>
+                        <a href="/drivers">Find Drivers</a>
                     </li>
                     <li>
                         <a href="/profile">Your Rides</a>
                     </li>
+
+
             {% else %}
                     <li>
-                        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" >Add Your Ride</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" >Find A Ride</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" >Review</a>
+                        <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" >Login</a>
                     </li>
             {% endif %}
                 </ul>

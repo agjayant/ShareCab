@@ -49,7 +49,10 @@
                         <a href="/query">Find A Ride</a>
                     </li>
                     <li>
-                        <a href="/review">Review</a>
+                        <a href="/review">Add Driver</a>
+                    </li>
+                    <li>
+                        <a href="/drivers">Find Drivers</a>
                     </li>
                     <li>
                         <a href="/profile">Your Rides</a>
@@ -69,6 +72,7 @@
 <table class="table-fill">
 <thead>
     <tr>
+        <th class="text-center">Added By</th>
         <th class="text-center">Source</th>
         <th class="text-center">Destination</th>
         <th class="text-center">Date</th>
@@ -80,6 +84,7 @@
 <tbody class="table-hover">
     {% for ans in answer %}
         <tr>
+            <td class="text-center">{{ans.name}}</td>
             <td class="text-center">{{ans.source}}</td>
             <td class="text-center">{{ans.destination}}</td>
             <td class="text-center">{{ans.ridedate}}</td>
